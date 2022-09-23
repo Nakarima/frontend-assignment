@@ -43,18 +43,9 @@ const CardsContainer = styled.div`
 `;
 
 export const Home = () => {
-  const {
-    sortParam,
-    filterParam,
-    onSortChange,
-    onFilterChange,
-  } = useFilterAndSortParams();
+  const { sortParam, filterParam, onSortChange, onFilterChange } = useFilterAndSortParams();
 
-  const {
-    articles,
-    isLoading,
-    hasError,
-  } = useArticles({
+  const { articles, isLoading, hasError } = useArticles({
     sortParam,
     filterParam,
   });
@@ -79,22 +70,23 @@ export const Home = () => {
           />
         </FiltersContainer>
         <CardsContainer>
-          {articles === undefined || isLoading ?
-            <p>Loading...</p> :
-            hasError ?
-              <p>Something went wrong, please try again later</p> :
-              articles.length === 0 ?
-                <p>No articles found</p> :
-
-                articles.map((article) => (
-                  <Card
-                    key={article.id}
-                    title={article.title}
-                    description={article.preamble || ''}
-                    image={article.image}
-                    date={article.date}
-                  />
-                ))}
+          {articles === undefined || isLoading ? (
+            <p>Loading...</p>
+          ) : hasError ? (
+            <p>Something went wrong, please try again later</p>
+          ) : articles.length === 0 ? (
+            <p>No articles found</p>
+          ) : (
+            articles.map((article) => (
+              <Card
+                key={article.id}
+                title={article.title}
+                description={article.preamble || ''}
+                image={article.image}
+                date={article.date}
+              />
+            ))
+          )}
         </CardsContainer>
       </Content>
     </Container>

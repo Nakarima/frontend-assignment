@@ -9,18 +9,20 @@ export const useFilterAndSortParams = () => {
   const sortParam = searchParams.get('sortBy');
   const filterParam = searchParams.get('filterBy');
 
-  const correctSortParam = sortParam !== null && isSortOption(sortParam) ? sortParam : defaultSortOption;
-  const correctFilterParam = filterParam !== null && isFilterOption(filterParam) ? filterParam : defaultFilterOption;
+  const correctSortParam =
+    sortParam !== null && isSortOption(sortParam) ? sortParam : defaultSortOption;
+  const correctFilterParam =
+    filterParam !== null && isFilterOption(filterParam) ? filterParam : defaultFilterOption;
 
   const onSortChange = (value: string) => {
-    setSearchParams(prev => {
+    setSearchParams((prev) => {
       prev.set('sortBy', value);
       return prev;
     });
   };
 
   const onFilterChange = (value: string) => {
-    setSearchParams(prev => {
+    setSearchParams((prev) => {
       prev.set('filterBy', value);
       return prev;
     });

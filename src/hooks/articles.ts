@@ -9,10 +9,7 @@ interface IProps {
   filterParam?: filterOption;
 }
 
-export const useArticles = ({
-  sortParam,
-  filterParam,
-}: IProps) => {
+export const useArticles = ({ sortParam, filterParam }: IProps) => {
   const [sports, setSports] = useState<IArticle[]>();
   const [fashion, setFashion] = useState<IArticle[]>();
   const [hasError, setHasError] = useState(false);
@@ -21,13 +18,14 @@ export const useArticles = ({
   useEffect(() => {
     setIsLoading(true);
     getArticles('Fashion')
-      .then(data => setFashion(data.articles))
+      .then((data) => setFashion(data.articles))
       .catch(() => setHasError(true))
-      .then(() => getArticles('Sports')
-        .then(data => setSports(data.articles))
-        .catch(() => setHasError(true)))
+      .then(() =>
+        getArticles('Sports')
+          .then((data) => setSports(data.articles))
+          .catch(() => setHasError(true)),
+      )
       .then(() => setIsLoading(false));
-
   }, []);
 
   const articles = useMemo(() => {

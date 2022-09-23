@@ -6,13 +6,16 @@ import { Home } from './home';
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: () => ({
-    pathname: 'localhost:3000'
-  })
+    pathname: 'localhost:3000',
+  }),
 }));
 
 it('renders without crashing', async () => {
-
-  render(<BrowserRouter><Home /></BrowserRouter>);
+  render(
+    <BrowserRouter>
+      <Home />
+    </BrowserRouter>,
+  );
 
   expect(screen.getAllByRole('combobox')).toHaveLength(2);
 });
