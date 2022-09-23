@@ -8,10 +8,12 @@ const Container = styled.div`
 `;
 
 const StyledImg = styled.img`
-  max-width: 30%;
+  width: 16rem;
+  height: 9rem;
   margin-right: 0.5rem;
   border-radius: 0.25rem;
   object-fit: cover;
+  flex: 0 0 auto;
 `;
 
 const TextContainer = styled.div`
@@ -68,7 +70,7 @@ interface IProps {
 export const Card = ({ title, description, image, date }: IProps) => {
   return (
     <Container>
-      <StyledImg src={image} alt={title} />
+      <StyledImg src={image || 'https://via.placeholder.com/150'} alt={title} />
       <TextContainer>
         <HeadingContainer>
           <Heading>{title}</Heading>
