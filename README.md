@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Frontend assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I've created an app that fetches articles from server and displays them in a list. The user can filter articles by source and sort them by date (kinda). Two components have storybook page so they can be easily tweaked.
+Sorting could be improved by changing backend response. Also the hooks could be tested separately. Lastly I would like to add some end to end tests.
 
 ## Available Scripts
 
