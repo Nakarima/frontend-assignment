@@ -13,6 +13,11 @@ export const getArticles = async (
 ): Promise<{ articles: IArticle[] }> => {
   const filter = filterParam ? `/${filterParam.toLowerCase()}` : '';
   const response = await fetch(`http://localhost:6010/articles${filter}`);
+
+  if (!response.ok) {
+    throw new Error('Something went wrong');
+  }
+  
   const data = await response.json();
   return data;
 };

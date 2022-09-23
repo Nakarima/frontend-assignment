@@ -52,6 +52,8 @@ export const Home = () => {
 
   const {
     articles,
+    isLoading,
+    hasError,
   } = useArticles({
     sortParam,
     filterParam,
@@ -77,17 +79,19 @@ export const Home = () => {
           />
         </FiltersContainer>
         <CardsContainer>
-          {articles === undefined ?
+          {articles === undefined || isLoading ?
             <p>Loading...</p> :
-            articles.map((article) => (
-              <Card
-                key={article.id}
-                title={article.title}
-                description={article.preamble || ''}
-                image={article.image}
-                date={article.date}
-              />
-            ))}
+            hasError ?
+              <p>Something went wrong, please try again later</p> :
+              articles.map((article) => (
+                <Card
+                  key={article.id}
+                  title={article.title}
+                  description={article.preamble || ''}
+                  image={article.image}
+                  date={article.date}
+                />
+              ))}
         </CardsContainer>
       </Content>
     </Container>
