@@ -7,3 +7,5 @@ export const parameters = {
     },
   },
 }
+
+import '../src/index.css';

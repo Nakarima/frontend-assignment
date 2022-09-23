@@ -11,14 +11,11 @@ export default {
 const Template: ComponentStory<typeof SelectInput> = (args) => {
   const [value, setValue] = useState(args.options[0]);
 
-  return <SelectInput
-    {...args}
-    value={value}
-    onChange={setValue}
-  />;
+  return <SelectInput {...args} value={value} onChange={setValue} />;
 };
 
 export const Example = Template.bind({});
 Example.args = {
   options: ['Option 1', 'Option 2', 'Option 3'],
+  title: 'Title',
 };

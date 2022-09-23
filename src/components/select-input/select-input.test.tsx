@@ -10,13 +10,11 @@ it('renders without crashing', async () => {
     return;
   };
 
-  render(<SelectInput
-    options={options}
-    value={value}
-    onChange={onChange}
-  />);
+  const title = 'Title';
+
+  render(<SelectInput options={options} value={value} title={title} onChange={onChange} />);
 
   expect(screen.getByRole('combobox')).toHaveDisplayValue(options[0]);
-  expect(await screen.findByRole('option', { name: options[1]})).toBeInTheDocument();
-
+  expect(screen.getByText(`${title}:`)).toBeInTheDocument();
+  expect(await screen.findByRole('option', { name: options[1] })).toBeInTheDocument();
 });
